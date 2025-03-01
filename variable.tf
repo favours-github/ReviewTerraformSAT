@@ -437,3 +437,32 @@ variable "asg_health_check_type" {
   description = "Health check type for the ASG"
   default     = "EC2"
 }
+
+
+// ROUTE53 Variable file //
+
+# Route 53 Variables
+variable "domain_name" {
+  description = "The domain name for the hosted zone in Route 53"
+  type        = string
+  default     = "example.com"
+}
+
+variable "record_name" {
+  description = "The subdomain for the record in Route 53"
+  type        = string
+  default     = "www.example.com"
+}
+
+variable "record_type" {
+  description = "The type of DNS record (e.g., A, CNAME)"
+  type        = string
+  default     = "A"
+}
+
+variable "evaluate_target_health" {
+  description = "Whether to evaluate target health in Route 53 alias record"
+  type        = bool
+  default     = true
+}
+

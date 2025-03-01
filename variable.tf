@@ -350,3 +350,23 @@ variable "alb_certificate_arn" {
   description = "ARN of the SSL certificate for HTTPS listener"
   default     = ""
 }
+
+
+// SNS Variable file //
+
+# SNS Topic Variables
+variable "sns_topic_name" {
+  description = "Name of the SNS topic"
+  default     = "user-updates-topic"
+}
+
+# SNS Subscription Variables
+variable "sns_subscription_protocol" {
+  description = "Protocol for the SNS topic subscription (e.g., email, SMS, lambda, etc.)"
+  default     = "email"
+}
+
+variable "sns_subscription_endpoint" {
+  description = "Endpoint to receive SNS notifications (e.g., email address or webhook URL)"
+  default     = ""
+}

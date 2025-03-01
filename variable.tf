@@ -370,3 +370,70 @@ variable "sns_subscription_endpoint" {
   description = "Endpoint to receive SNS notifications (e.g., email address or webhook URL)"
   default     = ""
 }
+
+
+// ASG Variable file //
+
+# Launch Template Variables
+variable "launch_template_name" {
+  description = "Name of the EC2 launch template"
+  default     = "webserver-launch-template"
+}
+
+variable "ami_id" {
+  description = "AMI ID for the web server"
+  default     = "ami-1234567890abcdef0"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  default     = "t2.micro"
+}
+
+variable "key_pair_name" {
+  description = "Key pair name for SSH access"
+  default     = ""
+}
+
+variable "instance_monitoring" {
+  description = "Enable detailed monitoring for instances"
+  default     = false
+}
+
+variable "security_group_ids" {
+  description = "List of security group IDs for the web servers"
+  type        = list(string)
+  default     = []
+}
+
+# Auto Scaling Group Variables
+variable "public_subnet_ids" {
+  description = "List of public subnet IDs where instances will launch"
+  type        = list(string)
+  default     = []
+}
+
+variable "asg_desired_capacity" {
+  description = "Desired number of instances in the ASG"
+  default     = 2
+}
+
+variable "asg_max_size" {
+  description = "Maximum number of instances in the ASG"
+  default     = 4
+}
+
+variable "asg_min_size" {
+  description = "Minimum number of instances in the ASG"
+  default     = 1
+}
+
+variable "asg_name" {
+  description = "Name of the Auto Scaling Group"
+  default     = "webserver-asg"
+}
+
+variable "asg_health_check_type" {
+  description = "Health check type for the ASG"
+  default     = "EC2"
+}

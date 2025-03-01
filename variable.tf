@@ -168,7 +168,7 @@ variable "ssh_allowed_cidrs" {
 }
 
 
-// Security-Group Variable file //
+// Database-rds Variable file //
 
 # Database Subnet Group Name
 variable "database_subnet_group_name" {
@@ -219,4 +219,134 @@ variable "multi_az" {
   description = "Enable Multi-AZ deployment for the database"
   type        = bool
   default     = false
+}
+
+
+// ALB Variable file //
+
+# Application Load Balancer Variables
+variable "alb_name" {
+  description = "Name of the application load balancer"
+  default     = "my-application-load-balancer"
+}
+
+variable "alb_internal" {
+  description = "Whether the ALB is internal"
+  type        = bool
+  default     = false
+}
+
+# Target Group Variables
+variable "alb_target_group_name" {
+  description = "Name of the ALB target group"
+  default     = "alb-target-group"
+}
+
+variable "alb_target_type" {
+  description = "Target type for the ALB target group"
+  default     = "instance"
+}
+
+variable "alb_target_port" {
+  description = "Port for the ALB target group"
+  default     = 80
+}
+
+variable "alb_target_protocol" {
+  description = "Protocol for the ALB target group"
+  default     = "HTTP"
+}
+
+# Health Check Variables
+variable "health_check_healthy_threshold" {
+  description = "Healthy threshold for ALB target group"
+  default     = 3
+}
+
+variable "health_check_interval" {
+  description = "Interval between health checks"
+  default     = 30
+}
+
+variable "health_check_matcher" {
+  description = "HTTP status code matcher for health checks"
+  default     = "200"
+}
+
+variable "health_check_path" {
+  description = "Path for ALB health check"
+  default     = "/"
+}
+
+variable "health_check_port" {
+  description = "Port for health check"
+  default     = "traffic-port"
+}
+
+variable "health_check_protocol" {
+  description = "Protocol for health check"
+  default     = "HTTP"
+}
+
+variable "health_check_timeout" {
+  description = "Timeout duration for health checks"
+  default     = 5
+}
+
+variable "health_check_unhealthy_threshold" {
+  description = "Unhealthy threshold for ALB target group"
+  default     = 3
+}
+
+# HTTP Listener Variables
+variable "alb_http_listener_port" {
+  description = "Port for HTTP listener"
+  default     = 80
+}
+
+variable "alb_http_listener_protocol" {
+  description = "Protocol for HTTP listener"
+  default     = "HTTP"
+}
+
+# Redirect Action Variables
+variable "alb_redirect_host" {
+  description = "Redirect host for ALB HTTP listener"
+  default     = "#{host}"
+}
+
+variable "alb_redirect_path" {
+  description = "Redirect path for ALB HTTP listener"
+  default     = "/#{path}"
+}
+
+variable "alb_redirect_port" {
+  description = "Redirect port for ALB HTTP listener"
+  default     = "443"
+}
+
+variable "alb_redirect_protocol" {
+  description = "Redirect protocol for ALB HTTP listener"
+  default     = "HTTPS"
+}
+
+variable "alb_redirect_status_code" {
+  description = "Redirect status code for ALB HTTP listener"
+  default     = "HTTP_301"
+}
+
+# HTTPS Listener Variables
+variable "alb_https_listener_port" {
+  description = "Port for HTTPS listener"
+  default     = 443
+}
+
+variable "alb_https_listener_protocol" {
+  description = "Protocol for HTTPS listener"
+  default     = "HTTPS"
+}
+
+variable "alb_certificate_arn" {
+  description = "ARN of the SSL certificate for HTTPS listener"
+  default     = ""
 }

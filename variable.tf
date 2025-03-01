@@ -87,3 +87,82 @@ variable "private_data_subnet_az2_name" {
   description = "Name of the private data subnet in AZ2"
   default     = "private-data-subnet-az2"
 }
+
+
+// Nat-Gateway Variable file //
+
+# Elastic IP Names
+variable "eip_nat_gateway_az1_name" {
+  description = "Name of the Elastic IP for NAT Gateway in AZ1"
+  default     = "eip-nat-gateway-az1"
+}
+
+variable "eip_nat_gateway_az2_name" {
+  description = "Name of the Elastic IP for NAT Gateway in AZ2"
+  default     = "eip-nat-gateway-az2"
+}
+
+# NAT Gateway Names
+variable "nat_gateway_az1_name" {
+  description = "Name of the NAT Gateway in AZ1"
+  default     = "nat-gateway-az1"
+}
+
+variable "nat_gateway_az2_name" {
+  description = "Name of the NAT Gateway in AZ2"
+  default     = "nat-gateway-az2"
+}
+
+# Private Route Table Names
+variable "private_route_table_az1_name" {
+  description = "Name of the Private Route Table in AZ1"
+  default     = "private-route-table-az1"
+}
+
+variable "private_route_table_az2_name" {
+  description = "Name of the Private Route Table in AZ2"
+  default     = "private-route-table-az2"
+}
+
+
+// Security-Group Variable file //
+
+# Security Group Names
+variable "alb_security_group_name" {
+  description = "Name of the Application Load Balancer security group"
+  default     = "alb-security-group"
+}
+
+variable "ssh_security_group_name" {
+  description = "Name of the SSH security group"
+  default     = "ssh-security-group"
+}
+
+variable "webserver_security_group_name" {
+  description = "Name of the web server security group"
+  default     = "webserver-security-group"
+}
+
+variable "database_security_group_name" {
+  description = "Name of the database security group"
+  default     = "database-security-group"
+}
+
+# Allowed CIDR Blocks
+variable "http_allowed_cidrs" {
+  description = "CIDR blocks allowed for HTTP access"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "https_allowed_cidrs" {
+  description = "CIDR blocks allowed for HTTPS access"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
+variable "ssh_allowed_cidrs" {
+  description = "CIDR blocks allowed for SSH access"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]  # Change this to a specific IP range for better security
+}

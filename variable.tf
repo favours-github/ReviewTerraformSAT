@@ -166,3 +166,57 @@ variable "ssh_allowed_cidrs" {
   type        = list(string)
   default     = ["0.0.0.0/0"]  # Change this to a specific IP range for better security
 }
+
+
+// Security-Group Variable file //
+
+# Database Subnet Group Name
+variable "database_subnet_group_name" {
+  description = "Name of the database subnet group"
+  default     = "database-subnet-group"
+}
+
+# Database Snapshot Variables
+variable "db_snapshot_identifier" {
+  description = "Identifier of the latest database snapshot"
+  default     = ""
+}
+
+variable "most_recent_snapshot" {
+  description = "Whether to use the most recent snapshot"
+  type        = bool
+  default     = true
+}
+
+variable "snapshot_type" {
+  description = "Type of database snapshot to use"
+  default     = "automated"
+}
+
+# Database Instance Variables
+variable "db_instance_class" {
+  description = "Instance class for the database"
+  default     = "db.t3.medium"
+}
+
+variable "skip_final_snapshot" {
+  description = "Skip final snapshot before database deletion"
+  type        = bool
+  default     = true
+}
+
+variable "db_availability_zone" {
+  description = "Availability zone for the database instance"
+  default     = "us-east-1a"
+}
+
+variable "db_identifier" {
+  description = "Identifier for the database instance"
+  default     = "my-db-instance"
+}
+
+variable "multi_az" {
+  description = "Enable Multi-AZ deployment for the database"
+  type        = bool
+  default     = false
+}
